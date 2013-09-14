@@ -16,7 +16,7 @@ from helpers import AdminErrorList
 class NestedModelAdmin(ModelAdmin):
     class Media:
         css = {'all': ('admin/css/nested.css',)}
-        js = ('admin/js/nested.js',)
+        js = ('admin/js/inlines.js',)
         
     def get_form(self, request, obj=None, **kwargs):
         return super(NestedModelAdmin, self).get_form(
