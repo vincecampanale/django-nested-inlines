@@ -252,7 +252,7 @@
 			update_props(template, normalized_formset_prefix, formset_prefix);
 			//reset update formset management variables
 			template.find('#id_' + formset_prefix + '-INITIAL_FORMS').val(0);
-			template.find('#id_' + formset_prefix + '-TOTAL_FORMS').val(1);
+			template.find('#id_' + formset_prefix + '-TOTAL_FORMS').val(0);
 			//remove the fk and id values, because these don't exist yet
 			template.find('.original').empty();
 			
