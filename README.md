@@ -1,7 +1,7 @@
 # django-nested-inlines
 
 ## SilverFix'es bugfixes:
-- *Fixed severe bug with number of TOTAL_FORMS when adding a new nested*
+- **Fixed severe bug with number of TOTAL_FORMS when adding a new nested**
 - Fixed exception using it with a no-deletable inline
 - Deleted inlines.min.js
 - admin.py was pointing to wrong js filename
