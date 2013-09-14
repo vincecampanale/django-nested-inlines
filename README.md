@@ -1,11 +1,11 @@
 # django-nested-inlines
 
 ## *SilverFix'es bugfix & changes*
-- **Fixed severe bug with number of TOTAL_FORMS when adding a new nested**
-- Fixed look 'n feel of the nested table (dynamic colspan handling)
-- Fixed exception using it with a no-deletable inline
-- Deleted inlines.min.js
-- admin.py was pointing to wrong js filename
+- [inlines.js] **Fixed severe bug with number of TOTAL_FORMS when adding a new nested**
+- [tabular.html] Fixed look 'n feel of the nested table (dynamic colspan handling)
+- [admin.py] Fixed exception using it with a no-deletable inline
+- [project structure] Deleted inlines.min.js
+- [admin.py] NestedModelAdmin was pointing to wrong js filename
 
 ## Overview
 
