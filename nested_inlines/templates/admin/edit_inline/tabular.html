@@ -63,7 +63,7 @@
         {% if inline_admin_form.form.nested_formsets %}
           {% for inline_admin_formset in inline_admin_form.form.nested_formsets %}
           <tr class="nested-inline-row {{ row_number_class }}{% if not forloop.last %} no-bottom-border{% endif %}">
-            <td colspan="0">
+            <td colspan="{{ inline_admin_form|cell_count }}">
               {% if inline_admin_formset.opts.template == stacked_template %}
                 {% include stacked_template with indent=0 prev_prefix=recursive_formset.formset.prefix %}
               {% else %}
