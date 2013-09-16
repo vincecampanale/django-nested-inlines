@@ -19,8 +19,9 @@ class NestedModelAdmin(ModelAdmin):
         js = ('admin/js/inlines.js',)
         
     def get_form(self, request, obj=None, **kwargs):
-        return super(NestedModelAdmin, self).get_form(
-            request, obj, form=BaseNestedModelForm, **kwargs)
+        if not issubclass(self.form, BaseNestedModelForm):
+            raise ValueError('self.form must to be an instance of BaseNestedModelForm')
+        return super(NestedModelAdmin, self).get_form(request, obj, **kwargs)
         
     def get_inline_instances(self, request, obj=None):
         inline_instances = []
