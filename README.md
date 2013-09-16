@@ -6,6 +6,7 @@
 - [admin.py] Fixed exception using it with a no-deletable inline
 - [project structure] Deleted inlines.min.js
 - [admin.py] NestedModelAdmin was pointing to wrong js filename
+- [admin.py] Fixed a bug that would be skip any custom validation in clean() method
 
 ## Overview
 
