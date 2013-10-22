@@ -56,7 +56,7 @@ magic happen.
 		inlines = [MyNestedInline,]
 	
 	class MyAdmin(NestedModelAdmin):
-		pass
+		inlines = [MyInline,]
 	
 	admin.site.register(A, MyAdmin)
 
