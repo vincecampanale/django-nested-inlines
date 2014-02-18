@@ -14,6 +14,9 @@ from nested_inlines.forms import BaseNestedModelForm, BaseNestedInlineFormSet
 from nested_inlines.helpers import AdminErrorList
 
 class NestedModelAdmin(ModelAdmin):
+
+    form = BaseNestedModelForm
+
     class Media:
         css = {'all': ('admin/css/nested.css',)}
         js = ('admin/js/inlines.js',)
