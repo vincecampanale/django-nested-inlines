@@ -27,5 +27,8 @@ setup(
         'Programming Language :: Python',
         'Topic :: Software Development :: Libraries :: Python Modules'
     ],
+    package_data={'nested_inlines' : ['templates/admin/edit_inline/*.html',
+                                      'static/admin/css/*.css',
+                                      'static/admin/js/*.js']},
 )
 
