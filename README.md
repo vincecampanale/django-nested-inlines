@@ -1,12 +1,13 @@
 # django-nested-inlines
 
-## *SilverFix'es bugfix & changes*
+## *SilverFix'es Fork bugfix & changes*
 - [inlines.js] **Fixed severe bug with number of TOTAL_FORMS when adding a new nested**
 - [tabular.html] Fixed look 'n feel of the nested table (dynamic colspan handling)
 - [admin.py] Fixed exception using it with a no-deletable inline
 - [project structure] Deleted inlines.min.js
 - [admin.py] NestedModelAdmin was pointing to wrong js filename
 - [admin.py] Fixed a bug that would be skip any custom validation in clean() method
+- [admin.py] [**Big thanks to @nastasi-oq**] Fixed a bug that would be raise exception if save_as_new enabled
 
 ## Overview
 
