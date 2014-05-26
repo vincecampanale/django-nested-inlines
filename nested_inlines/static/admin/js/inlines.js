@@ -215,7 +215,11 @@
 		
 		// Check if the form should have nested formsets
 		// This is horribly hackish. It tries to collect one set of nested inlines from already existing rows and clone these
-		var search_space = $("#"+sourceParentPrefix+'-0').nextUntil("."+sourceParentPrefix + "-not-nested");
+		
+
+		// not sure why, but the nextUntil will frequently break the search_space
+		// var search_space = $("#"+sourceParentPrefix+'-0').nextUntil("."+sourceParentPrefix + "-not-nested");
+		var search_space = $("#"+sourceParentPrefix+'-0');
 		
 		//all nested inlines
 		var nested_inlines = search_space.find("." + sourceParentPrefix + "-nested-inline");
@@ -422,9 +426,9 @@
 		// Hide add button in case we've hit the max, except we want to add infinitely
 		var btn = $("#" + options.prefix + "-empty").parent().children('.'+options.addCssClass);
 		if (isAddButtonVisible(options)) {
-			btn.hide();
-		} else {
 			btn.show();
+		} else {
+			btn.hide();
 		}
 	}
 	
