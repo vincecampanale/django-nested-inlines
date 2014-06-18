@@ -279,7 +279,7 @@
 		});
 
 		return nested_inlines.length;
-	};
+	}
 
 
 	function update_props(template, normalized_formset_prefix, formset_prefix) {
@@ -300,7 +300,7 @@
 			}
 		});
 
-	};
+	}
 
 	// This returns the amount of forms in the given formset
 	function get_no_forms(formset_prefix) {
@@ -319,7 +319,7 @@
 		} else {
 			$("#id_" + formset_prefix + "-TOTAL_FORMS").attr("autocomplete", "off").val(parseInt(no_forms) - 1);
 		}
-	};
+	}
 
 	// This return the maximum amount of forms in the given formset
 	function get_max_forms(formset_prefix) {
@@ -328,7 +328,7 @@
 			return '';
 		}
 		return parseInt(max_forms);
-	};
+	}
 
 	function addRow(options) {
 		var nextIndex = get_no_forms(options.prefix);
@@ -368,7 +368,7 @@
 		}
 
 		nextIndex = nextIndex + 1;
-	};
+	}
 
 	function insertNewRow(prefix, options) {
 		var template = $("#" + prefix + "-empty");
@@ -383,7 +383,7 @@
 		change_no_forms(prefix, true);
 
 		return row;
-	};
+	}
 
 	function prepareRowTemplate(template, prefix, index, options) {
 		var row = template.clone(true);
@@ -405,7 +405,7 @@
 			updateElementIndex(this, prefix, index);
 		});
 		return row;
-	};
+	}
 
 	function updateElementIndex(el, prefix, ndx) {
 		var id_regex = new RegExp("(" + prefix + "-(\\d+|__prefix__))");
@@ -419,7 +419,7 @@
 		if (el.name) {
 			el.name = el.name.replace(id_regex, replacement);
 		}
-	};
+	}
 
 	/** show or hide the addButton **/
 	function updateAddButton(options) {
