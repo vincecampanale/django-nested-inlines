@@ -260,17 +260,16 @@
 			//remove the fk and id values, because these don't exist yet
 			template.find('.original').empty();
 
-
-
 			//postprocess stacked/tabular
+      var formset;
 			if (isTabular) {
-				var formset = template.find('.tabular.inline-related tbody tr.' + formset_prefix + '-not-nested').tabularFormset(options);
+				formset = template.find('.tabular.inline-related tbody tr.' + formset_prefix + '-not-nested').tabularFormset(options);
 				var border_class = (index+1 < nested_inlines.length) ? ' no-bottom-border' : '';
 				var wrapped = $('<tr class="nested-inline-row' + border_class + '"/>').html($('<td colspan="100%"/>').html(template));
 				//insert the formset after the row
 				row.after(wrapped);
 			} else {
-				var formset = template.find(".inline-related").stackedFormset(options);
+				formset = template.find(".inline-related").stackedFormset(options);
 
 				row.after(template);
 			}
