@@ -312,6 +312,7 @@
 		return parseInt(formset_prop.attr("autocomplete", "off").val(), 10);
 	}
 
+	// This changes the amount of forms in the given formset
 	function change_no_forms(formset_prefix, increase) {
 		var no_forms = get_no_forms(formset_prefix);
 		if (increase) {
