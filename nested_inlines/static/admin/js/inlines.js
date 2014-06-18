@@ -309,7 +309,7 @@
 		if (!formset_prop.length) {
 			return 0;
 		}
-		return parseInt(formset_prop.attr("autocomplete", "off").val());
+		return parseInt(formset_prop.attr("autocomplete", "off").val(), 10);
 	}
 
 	function change_no_forms(formset_prefix, increase) {
