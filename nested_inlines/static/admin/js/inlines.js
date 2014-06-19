@@ -261,7 +261,7 @@
 			template.find('.original').empty();
 
 			//postprocess stacked/tabular
-      var formset;
+			var formset;
 			if (isTabular) {
 				formset = template.find('.tabular.inline-related tbody tr.' + formset_prefix + '-not-nested').tabularFormset(options);
 				var border_class = (index+1 < nested_inlines.length) ? ' no-bottom-border' : '';
