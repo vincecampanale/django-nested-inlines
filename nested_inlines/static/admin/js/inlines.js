@@ -209,18 +209,18 @@
 	function create_nested_formsets(parentPrefix, rowId) {
 		// we use the first formset as template. so replace every index by 0
 		var sourceParentPrefix = parentPrefix.replace(/[-][0-9][-]/g, "-0-");
-		
+
 		var row_prefix = parentPrefix+'-'+rowId;
 		var row = $('#'+row_prefix);
-		
+
 		// Check if the form should have nested formsets
 		// This is horribly hackish. It tries to collect one set of nested inlines from already existing rows and clone these
-		
+
 
 		// not sure why, but the nextUntil will frequently break the search_space
-		// var search_space = $("#"+sourceParentPrefix+'-0').nextUntil("."+sourceParentPrefix + "-not-nested");
-		var search_space = $("#"+sourceParentPrefix+'-0');
-		
+		var search_space = $("#"+sourceParentPrefix+'-0').nextUntil("."+sourceParentPrefix + "-not-nested");
+		//var search_space = $("#"+sourceParentPrefix+'-0');
+
 		//all nested inlines
 		var nested_inlines = search_space.find("." + sourceParentPrefix + "-nested-inline");
 		nested_inlines.each(function(index) {
@@ -329,13 +329,13 @@
 		}
 		return parseInt(max_forms);
 	};
-	
+
 	function addRow(options) {
 		var nextIndex = get_no_forms(options.prefix);
-		
+
 		var row = insertNewRow(options.prefix, options);
 
-		updateAddButton(options.prefix);
+		updateAddButton(options);
 
 		// Add delete button handler
 		row.find("a." + options.deleteCssClass).click(function(e) {
@@ -355,8 +355,10 @@
 				options.removed(formset_to_update);
 			}
 
+                    updateAddButton(options);
+
 		});
-		
+
 		var num_formsets = create_nested_formsets(options.prefix, nextIndex);
 		if(row.is("tr") && num_formsets > 0) {
 			row.addClass("no-bottom-border");
