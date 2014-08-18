@@ -26,10 +26,6 @@
         <tr class="form-row {% cycle "row1" "row2" as row_number_class %} {% if inline_admin_form.original or inline_admin_form.show_url %}has_original{% endif %}{% if forloop.last %} empty-form{% endif %} {{ recursive_formset.formset.prefix }}-not-nested {% if inline_admin_form.form.nested_formsets %} no-bottom-border {% endif %}"
              id="{{ recursive_formset.formset.prefix }}-{% if not forloop.last %}{{ forloop.counter0 }}{% else %}empty{% endif %}">
         <td class="original">
-          {% if inline_admin_form.original or inline_admin_form.show_url %}<p>
-          {% if inline_admin_form.original %} {{ inline_admin_form.original }}{% endif %}
-          {% if inline_admin_form.show_url %}<a href="../../../r/{{ inline_admin_form.original_content_type_id }}/{{ inline_admin_form.original.id }}/">{% trans "View on site" %}</a>{% endif %}
-            </p>{% endif %}
           {% if django_version_lt_1_6 %}
             {% if inline_admin_form.has_auto_field %}{{ inline_admin_form.pk_field.field }}{% endif %}
           {% else %}
