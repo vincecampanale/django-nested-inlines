@@ -276,9 +276,7 @@
 
       // Does the new row have a parent with its own id? If not, ensure the new
       // row doesn't have an fk.
-      var parentIdString = parentPrefix + '-' + rowId;
-      var $parent = $('#' + parentIdString);
-      var $parentPk = $parent.find('#id_' + parentIdString + '-id').val();
+      var $parentPk = $('#id_' + parentPrefix + '-' + rowId + '-id').val();
       if(!$parentPk) {
         var $myId = template.find('input[name$=-id]').first();
         var $myFk = $myId.next();
