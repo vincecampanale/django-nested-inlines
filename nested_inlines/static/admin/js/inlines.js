@@ -274,11 +274,12 @@
 				row.after(template);
 			}
 
-      // Does the new row have a parent? If not, ensure it doesn't have an fk.
-      // TODO: This works if we're nested once (translation) but not twice
-      // (example).
-      var parentIdSelMatch = parentPrefix.match(/^.+?-[0-9]+/);
-      if(!parentIdSelMatch) {
+      // Does the new row have a parent with its own id? If not, ensure the new
+      // row doesn't have an fk.
+      var parentIdString = parentPrefix + '-' + rowId;
+      var $parent = $('#' + parentIdString);
+      var $parentPk = $parent.find('#id_' + parentIdString + '-id').val();
+      if(!$parentPk) {
         var $myId = template.find('input[name$=-id]').first();
         var $myFk = $myId.next();
         $myFk.val(null);
