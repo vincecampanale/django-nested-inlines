@@ -208,7 +208,7 @@
 
 	function create_nested_formsets(parentPrefix, rowId) {
 		// we use the first formset as template. so replace every index by 0
-		var sourceParentPrefix = parentPrefix.replace(/[-][0-9][-]/g, "-0-");
+		var sourceParentPrefix = parentPrefix.replace(/[-][0-9]*[-]/g, "-0-");
 
 		var row_prefix = parentPrefix+'-'+rowId;
 		var row = $('#'+row_prefix);
