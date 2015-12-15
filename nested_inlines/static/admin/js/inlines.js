@@ -105,7 +105,10 @@
 
 		var initPrepopulatedFields = function(row) {
 			row.find('.prepopulated_field').each(function() {
-				var field = $(this), input = field.find('input, select, textarea'), dependency_list = input.data('dependency_list') || [], dependencies = [];
+				var field = $(this),
+					input = field.find('input, select, textarea'),
+					dependency_list = input.data('dependency_list') || [],
+					dependencies = [];
 				$.each(dependency_list, function(i, field_name) {
 					dependencies.push('#' + row.find('.field-' + field_name).find('input, select, textarea').attr('id'));
 				});
@@ -173,7 +176,10 @@
 
 		var initPrepopulatedFields = function(row) {
 			row.find('.prepopulated_field').each(function() {
-				var field = $(this), input = field.find('input, select, textarea'), dependency_list = input.data('dependency_list') || [], dependencies = [];
+				var field = $(this),
+					input = field.find('input, select, textarea'),
+					dependency_list = input.data('dependency_list') || [],
+					dependencies = [];
 				$.each(dependency_list, function(i, field_name) {
 					dependencies.push('#' + row.find('.form-row .field-' + field_name).find('input, select, textarea').attr('id'));
 				});
