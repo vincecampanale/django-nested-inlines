@@ -305,13 +305,14 @@
 
 	// This returns the amount of forms in the given formset
 	function get_no_forms(formset_prefix) {
-		formset_prop = $("#id_" + formset_prefix + "-TOTAL_FORMS")
+		var formset_prop = $("#id_" + formset_prefix + "-TOTAL_FORMS");
 		if (!formset_prop.length) {
 			return 0;
 		}
-		return parseInt(formset_prop.attr("autocomplete", "off").val());
+		return parseInt(formset_prop.attr("autocomplete", "off").val(), 10);
 	}
 
+	// This changes the amount of forms in the given formset
 	function change_no_forms(formset_prefix, increase) {
 		var no_forms = get_no_forms(formset_prefix);
 		if (increase) {
