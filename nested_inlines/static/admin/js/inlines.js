@@ -105,7 +105,10 @@
 
 		var initPrepopulatedFields = function(row) {
 			row.find('.prepopulated_field').each(function() {
-				var field = $(this), input = field.find('input, select, textarea'), dependency_list = input.data('dependency_list') || [], dependencies = [];
+				var field = $(this),
+					input = field.find('input, select, textarea'),
+					dependency_list = input.data('dependency_list') || [],
+					dependencies = [];
 				$.each(dependency_list, function(i, field_name) {
 					dependencies.push('#' + row.find('.field-' + field_name).find('input, select, textarea').attr('id'));
 				});
@@ -173,7 +176,10 @@
 
 		var initPrepopulatedFields = function(row) {
 			row.find('.prepopulated_field').each(function() {
-				var field = $(this), input = field.find('input, select, textarea'), dependency_list = input.data('dependency_list') || [], dependencies = [];
+				var field = $(this),
+					input = field.find('input, select, textarea'),
+					dependency_list = input.data('dependency_list') || [],
+					dependencies = [];
 				$.each(dependency_list, function(i, field_name) {
 					dependencies.push('#' + row.find('.form-row .field-' + field_name).find('input, select, textarea').attr('id'));
 				});
@@ -305,13 +311,14 @@
 
 	// This returns the amount of forms in the given formset
 	function get_no_forms(formset_prefix) {
-		formset_prop = $("#id_" + formset_prefix + "-TOTAL_FORMS")
+		var formset_prop = $("#id_" + formset_prefix + "-TOTAL_FORMS");
 		if (!formset_prop.length) {
 			return 0;
 		}
-		return parseInt(formset_prop.attr("autocomplete", "off").val());
+		return parseInt(formset_prop.attr("autocomplete", "off").val(), 10);
 	}
 
+	// This changes the amount of forms in the given formset
 	function change_no_forms(formset_prefix, increase) {
 		var no_forms = get_no_forms(formset_prefix);
 		if (increase) {
