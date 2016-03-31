@@ -151,7 +151,7 @@ class NestedModelAdmin(ModelAdmin):
                 form_validated = False
                 new_object = self.model()
             prefixes = {}
-            for FormSet, inline in self.get_formsets_with_inlines(request):
+            for FormSet, inline in self._get_formsets(request):
                 prefix = FormSet.get_default_prefix()
                 prefixes[prefix] = prefixes.get(prefix, 0) + 1
                 if prefixes[prefix] != 1 or not prefix:
@@ -182,7 +182,7 @@ class NestedModelAdmin(ModelAdmin):
                     initial[k] = initial[k].split(",")
             form = ModelForm(initial=initial)
             prefixes = {}
-            for FormSet, inline in self.get_formsets_with_inlines(request):
+            for FormSet, inline in self._get_formsets(request):
                 prefix = FormSet.get_default_prefix()
                 prefixes[prefix] = prefixes.get(prefix, 0) + 1
                 if prefixes[prefix] != 1 or not prefix:
@@ -257,7 +257,7 @@ class NestedModelAdmin(ModelAdmin):
                 form_validated = False
                 new_object = obj
             prefixes = {}
-            for FormSet, inline in self.get_formsets_with_inlines(request, new_object):
+            for FormSet, inline in self._get_formsets(request, new_object):
                 prefix = FormSet.get_default_prefix()
                 prefixes[prefix] = prefixes.get(prefix, 0) + 1
                 if prefixes[prefix] != 1 or not prefix:
@@ -279,7 +279,7 @@ class NestedModelAdmin(ModelAdmin):
         else:
             form = ModelForm(instance=obj)
             prefixes = {}
-            for FormSet, inline in self.get_formsets_with_inlines(request, obj):
+            for FormSet, inline in self._get_formsets(request, obj):
                 prefix = FormSet.get_default_prefix()
                 prefixes[prefix] = prefixes.get(prefix, 0) + 1
                 if prefixes[prefix] != 1 or not prefix:
@@ -322,6 +322,16 @@ class NestedModelAdmin(ModelAdmin):
         }
         context.update(extra_context or {})
         return self.render_change_form(request, context, change=True, obj=obj, form_url=form_url)
+
+    def _get_formsets(self, request, obj=None):
+        try:
+            return self.get_formsets_with_inlines(request, obj)
+        except AttributeError:
+            return zip(
+                self.get_formsets(request, obj),
+                self.get_inline_instances(request, obj)
+            )
+
 
 class NestedInlineModelAdmin(InlineModelAdmin):
     inlines = []
