@@ -166,8 +166,14 @@ class NestedModelAdmin(ModelAdmin):
             if self.all_valid_with_nesting(formsets) and form_validated:
                 self.save_model(request, new_object, form, False)
                 self.save_related(request, form, formsets, False)
-                change_message = self.construct_change_message(request, form, formsets, True)
-                self.log_addition(request, new_object, change_message)
+
+                if DJANGO_VERSION < (1, 9):
+                    change_message = self.construct_change_message(request, form, formsets)
+                    self.log_addition(request, new_object)
+                else:
+                    change_message = self.construct_change_message(request, form, formsets, True)
+                    self.log_addition(request, new_object, change_message)
+
                 return self.response_add(request, new_object)
         else:
             # Prepare the dict of initial data from the request.
