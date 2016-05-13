@@ -1,6 +1,6 @@
 # django-nested-inlines
 
-## *SilverFix'es Fork bugfix & changes*
+## *SpanishDict's fork of SilverFix'es Fork bugfix & changes*
 - [inlines.js] **Fixed severe bug with number of TOTAL_FORMS when adding a new nested**
 - [tabular.html] Fixed look 'n feel of the nested table (dynamic colspan handling)
 - [admin.py] Fixed exception using it with a no-deletable inline
@@ -24,13 +24,7 @@ it!
 
 ## Installation
 
-Uninstall django-nested-inlines if you install this package from other repository
-
-`pip uninstall django-nested-inlines`
-
-and install dj-nested-inlines
-
-`pip install dj-nested-inlines`
+`pip install -e git+git://github.com/spanishdict/django-nested-inlines.git@<commit hash you want>#egg=django-nested-inlines`
 
 ## Usage
 
@@ -54,17 +48,17 @@ magic happen.
 	from django.contrib import admin
 	from nested_inlines.admin import NestedModelAdmin, NestedStackedInline, NestedTabularInline
 	from models import A, B, C
-	
+
 	class MyNestedInline(NestedTabularInline):
 		model = C
-	
+
 	class MyInline(NestedStackedInline):
 		model = B
 		inlines = [MyNestedInline,]
-	
+
 	class MyAdmin(NestedModelAdmin):
 		inlines = [MyInline,]
-	
+
 	admin.site.register(A, MyAdmin)
 
 ## Credits

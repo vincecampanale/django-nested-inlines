@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 from nested_inlines import __version__
 
-github_url = 'https://github.com/silverfix/django-nested-inlines'
+github_url = 'https://github.com/spanishdict/django-nested-inlines'
 long_desc = open('README.md').read()
 
 setup(
@@ -12,8 +12,8 @@ setup(
     description='Adds nested inline support in Django admin',
     long_description=long_desc,
     url=github_url,
-    author='Andrea Rabbaglietti',
-    author_email='silverfix@gmail.com',
+    author='SpanishDict',
+    author_email='curiositymedia+engineering@gmail.com',
     packages=find_packages(exclude=['tests']),
     include_package_data=True,
     license='MIT License',
@@ -31,4 +31,3 @@ setup(
                                       'static/admin/css/*.css',
                                       'static/admin/js/*.js']},
 )
-
