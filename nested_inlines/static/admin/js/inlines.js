@@ -32,7 +32,7 @@
 
 		if (isAddButtonVisible(options)) {
 			var addButton;
-			if ($this.attr("tagName") == "TR") {
+			if ($this.attr("tagName") == "TR" || $this.prop("tagName") == "TR") {
 				// If forms are laid out as table rows, insert the
 				// "add" button in a new table row:
 				var numCols = this.eq(-1).children().length;
@@ -105,7 +105,10 @@
 
 		var initPrepopulatedFields = function(row) {
 			row.find('.prepopulated_field').each(function() {
-				var field = $(this), input = field.find('input, select, textarea'), dependency_list = input.data('dependency_list') || [], dependencies = [];
+				var field = $(this),
+					input = field.find('input, select, textarea'),
+					dependency_list = input.data('dependency_list') || [],
+					dependencies = [];
 				$.each(dependency_list, function(i, field_name) {
 					dependencies.push('#' + row.find('.field-' + field_name).find('input, select, textarea').attr('id'));
 				});
@@ -173,7 +176,10 @@
 
 		var initPrepopulatedFields = function(row) {
 			row.find('.prepopulated_field').each(function() {
-				var field = $(this), input = field.find('input, select, textarea'), dependency_list = input.data('dependency_list') || [], dependencies = [];
+				var field = $(this),
+					input = field.find('input, select, textarea'),
+					dependency_list = input.data('dependency_list') || [],
+					dependencies = [];
 				$.each(dependency_list, function(i, field_name) {
 					dependencies.push('#' + row.find('.form-row .field-' + field_name).find('input, select, textarea').attr('id'));
 				});
@@ -270,7 +276,6 @@
 				row.after(wrapped);
 			} else {
 				formset = template.find(".inline-related").stackedFormset(options);
-
 				row.after(template);
 			}
 
@@ -344,7 +349,7 @@
 
 		var row = insertNewRow(options.prefix, options);
 
-		updateAddButton(options.prefix);
+		updateAddButton(options);
 
 		// Add delete button handler
 		row.find("a." + options.deleteCssClass).click(function(e) {
@@ -363,6 +368,8 @@
 			if (options.removed) {
 				options.removed(formset_to_update);
 			}
+
+                    updateAddButton(options);
 
 		});
 
