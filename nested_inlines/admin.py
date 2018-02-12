@@ -1,7 +1,20 @@
 from django import VERSION as DJANGO_VERSION
 from django.contrib.admin.options import (ModelAdmin, InlineModelAdmin,
     csrf_protect_m, models, transaction, all_valid,
-    PermissionDenied, unquote, escape, Http404, reverse)
+    PermissionDenied, unquote, reverse)
+
+# Maintain backwards compatibility   
+try:
+    from django.contrib.admin.options import escape
+except ImportError:
+    from django.utils.html import escape
+
+# Maintain backwards compatibility
+try:
+    from django.contrib.admin.options import Http404
+except ImportError:
+    from django.http import Http404
+
 # Fix to make Django 1.5 compatible, maintain backwards compatibility
 try:
     from django.contrib.admin.options import force_unicode
