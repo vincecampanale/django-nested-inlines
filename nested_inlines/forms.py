@@ -45,7 +45,9 @@ class NestedModelFormMixin(NestedFormMixin):
         # TODO this should be generalized
         if hasattr(self, 'nested_formsets'):
             for f in self.nested_formsets:
-                if f.dependency_has_changed():
+                # Some of these formsets may not be nested formsets from this library
+                if hasattr(f, 'dependency_has_changed') \
+                        and f.dependency_has_changed():
                     return True
         return False
 
