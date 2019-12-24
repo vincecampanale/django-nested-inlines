@@ -38,24 +38,10 @@
           {{ inline_admin_form.fk_field.field }}
           {% spaceless %}
           {% for fieldset in inline_admin_form %}
-            {% for line in fieldset %}
-            {% endfor %}
           {% endfor %}
           {% endspaceless %}
         </td>
         {% for fieldset in inline_admin_form %}
-          {% for line in fieldset %}
-            {% for field in line %}
-              <td{% if field.field.name %} class="field-{{ field.field.name }}"{% endif %}>
-              {% if field.is_readonly %}
-                  <p>{{ field.contents|linebreaksbr }}</p>
-              {% else %}
-                  {{ field.field.errors.as_ul }}
-                  {{ field.field }}
-              {% endif %}
-              </td>
-            {% endfor %}
-          {% endfor %}
         {% endfor %}
         {% if recursive_formset.formset.can_delete %}
           <td class="delete">{% if inline_admin_form.original %}{{ inline_admin_form.deletion_field.field }}{% endif %}</td>
