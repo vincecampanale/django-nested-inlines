@@ -2,7 +2,7 @@ from django import VERSION as DJANGO_VERSION
 from django.contrib.admin.options import (ModelAdmin, InlineModelAdmin,
     csrf_protect_m, models, transaction, all_valid,
     PermissionDenied, unquote, reverse)
-from django.utils.safestring import get_func_args
+from django.utils.inspect import get_func_args
 
 # Maintain backwards compatibility
 try:
