@@ -60,7 +60,7 @@ class NestedModelAdmin(ModelAdmin):
                         inline.has_change_permission(request, obj) or
                         inline.has_delete_permission(request, obj)):
                     continue
-                if not inline.has_add_permission(request, obj):
+                if not inline_has_add_permission:
                     inline.max_num = 0
             inline_instances.append(inline)
 
