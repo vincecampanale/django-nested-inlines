@@ -160,7 +160,14 @@ class NestedModelAdmin(ModelAdmin):
         model = self.model
         opts = model._meta
 
-        if not self.has_add_permission(request, None):
+        # RemovedInDjango30Warning: obj will be a required argument.
+        args = get_func_args(inline.has_add_permission)
+        if 'obj' in args:
+            inline_has_add_permission = inline.has_add_permission(request, None)
+        else:
+            inline_has_add_permission = inline.has_add_permission(request)
+
+        if not inline_has_add_permission:
             raise PermissionDenied
 
         ModelForm = self.get_form(request)
@@ -373,11 +380,18 @@ class NestedInlineModelAdmin(InlineModelAdmin):
         for inline_class in self.inlines:
             inline = inline_class(self.model, self.admin_site)
             if request:
-                if not (inline.has_add_permission(request, obj) or
+                # RemovedInDjango30Warning: obj will be a required argument.
+                args = get_func_args(inline.has_add_permission)
+                if 'obj' in args:
+                    inline_has_add_permission = inline.has_add_permission(request, obj)
+                else:
+                    inline_has_add_permission = inline.has_add_permission(request)
+
+                if not (inline_has_add_permission or
                         inline.has_change_permission(request, obj) or
                         inline.has_delete_permission(request, obj)):
                     continue
-                if not inline.has_add_permission(request, obj):
+                if not inline_has_add_permission:
                     inline.max_num = 0
             inline_instances.append(inline)
 
